@@ -1,0 +1,36 @@
+A. Conversion of infix to postfix :
+    1. Start from the left of the operation
+    2. If the element is an operand, output it
+    3. Else check the precedence of the scanned operator
+        a. If it is greater or equal than the element already on the stack or the stack is empty, oush this operator on the stack
+        b. Else, pop all the operators from the stack which are greater in precedence and then push this operator
+    4. If the scanned character is '(', push it on the stack
+    5. Else if the scanned character is ')', pop all the values until a '(' is reached . Pop this '(' too.
+    6. Loop through 2-6 until the stack is empty
+    7. Pop out all the remaining values in the stack, after the output
+
+B.
+
+5. Infix to postfix conversion :
+
+(i)   (A - B) * (C / D)                             --->  A B - C D / *
+(ii)  (A + B ^ D) * (E - F) + G                     --->  A B D ^ + E F - * G +
+(iii) A *( B + D) / E - F * ( G + H / K)            --->  A B D + * E / F G H K / + * -
+(iv)  (A + B) * ((C  $ (D - E) + F) / G) $  (H - J) ---> A B +
+
+   Infix to prefix conversion :
+
+(i)   (A - B) * (C / D)                             --->  * - A B / C D
+(ii)  (A + B ^ D) * (E - F) + G                     --->  + * + A ^ B D - E F G
+(iii) A *( B + D) / E - F * ( G + H / K)            --->  - / * A + B D E * F + G / H K
+(iv)  (A + B) * ((C  $ (D - E) + F) / G) $  (H - J) ---> A B +
+
+6. Prefix to Infix :
+
+i.    + A - B C                         ---> (A + (B - C))
+ii.   + + A - * $ B C D / + E F * G H I --->
+iii.  + - $ A B C *D * * E F G          --->
+
+7.
+
+8.

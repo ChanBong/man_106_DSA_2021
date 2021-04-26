@@ -1,0 +1,75 @@
+1.  address(A[i])  =  base_address + (i-lb)*(size_of_data_type)
+
+    So
+    - A[5]      =    1024 + (5 - (-5))*(size_of_datatype)
+    - B[-1][5]  =    512 + (-1 - (-5))*(size_of_datatype)*(10 - (-5) + 1) + (5 - (-5))*(size_of_datatype)
+
+    Assuming size_of_datatype = 4
+
+    - A[5]      = 1064
+    - B[-1][5]  = 808
+
+2.
+    id   -   4 bytes
+    code -   4 bytes
+    Name -   8 bytes
+    double - 8 bytes
+
+    Size of a node = 24
+
+    - A[1] = 256 + 1*24 = 280
+    - A[3].name = 256 + 3*24 + 4 + 4 = 336
+
+    Size of A = 10 * 24 = 240
+
+3.
+    &p = 100
+
+    Size of date = 2*4 + 10*1 + 4*4 = 34
+    Size of person_detail = 20*1 + 34*2 + 4 + 20*1 + 20*1  = 132
+
+    - p[10]                         = 100 + 10*132 = 1420
+    - p[20].address[5]              = 100 + 20*132 + 20 + 2*34 + 4 + 4 = 2836
+    - p[20].date_detail[1].month[3] = 100 + 20*132 + 20 + 4*2 + 2*1 = 2770
+    - p[20].salary                  = 100 + 20*132 + 20 + 2*34 = 2828
+    - p[5].date_detail[2].day[2]    = Index out of range for "day"
+    - p[10].emailAddress[10]        = 100 + 10*132 + 20 + 2*34 + 4 + 20 + 9 = 1541
+
+4.
+    Notation : A -> Array of size, say N=10
+               M -> Number of elements in array
+               i -> Index of array where 3 items are to be inserted
+
+    Condition :  i <= m <= N-3
+
+    1. START
+    2. Input step      : Take the items to be inserted as a, b, c and take the index in i;
+    3. Assignment step : set j = m-1
+    4. Loop            : while j >= i ; do 4A and 4B
+            4A :         A[j+3] = A[j]
+            4B :         j -= 1
+    5. Assignment step : set A[i] = a
+                         set A[i+1] = b
+                         set A[i+2] = c
+                         set m = m+3
+    7. Stop
+
+
+5.
+
+    Notation : A -> Array of size, say N=10
+               k -> Number of elements in array
+               m -> index from which item is to be deleted
+
+    Condition :  m <= k <= N
+
+    1. START
+    2. Input step      : Take the indes of the value to be deleted at store in m ;
+    3. Assignment step : set j = m-1
+                         set x = A[m-1]
+    4. Loop            : while j<k-1 ; do 4A and 4B
+            4A :         A[j] = A[j+1]
+            4B :         j += 1
+    5. Assignment step : set k = k-1
+    6. Return          : return x
+    7. Stop
