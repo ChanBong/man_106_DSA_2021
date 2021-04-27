@@ -1,3 +1,5 @@
 *.exe
 *.cpp__tests
 *.out
+*.cpp:tests
+*~lock*

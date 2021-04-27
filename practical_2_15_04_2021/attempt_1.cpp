@@ -28,6 +28,7 @@ void stack_type::push(char item){
 char stack_type::pop(){
     if (top==-1) {
         cout << "Stack Underflow\nPush in some values first";
+        return -1;
     }
     else {
         return (stac[top--]);

@@ -39,6 +39,7 @@ void STACK::push(float item){
 float STACK::pop(){
     if (top==-1) {
         cout << "Stack Underflow\nPush in some values first";
+        return -1.0;
     }
     else {
         return (stac[top--]);
