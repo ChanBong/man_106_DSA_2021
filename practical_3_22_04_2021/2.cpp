@@ -3,13 +3,13 @@ using namespace std;
 
 #define MAX 50
 
-class char_QUEUE{
+class QUEUE{
     int q_fornt;
     int q_rear;
-    char char_queue[MAX];
+    char queue[MAX];
     int size;
 public:
-    char_QUEUE();
+    QUEUE();
     bool underflow();
     bool overflow();
     void add(char item);
@@ -17,50 +17,53 @@ public:
     int count();
 };
 
-char_QUEUE::char_QUEUE(){
-    //char_queue[MAX] = {'0'};
-    q_fornt = 0;
-    q_rear = 0;
+QUEUE::QUEUE(){
+    queue[MAX] = {0};
+    q_fornt = MAX-1;
+    q_rear = MAX-1;
     size = 0;
 }
 
-bool char_QUEUE::underflow(){
+bool QUEUE::underflow(){
     if (size==0) return true;
     else return false;
 }
 
-bool char_QUEUE::overflow(){
-    if (size==MAX) return true;
+bool QUEUE::overflow(){
+    if (q_rear==-1) return true;
     else return false;
 }
 
-void char_QUEUE::add(char item){
+void QUEUE::add(char item){
     if (overflow()) {
-        cout << "Queue is full\nRemove some values first";
+        cout << "Queue is full\nRemove some values first\n";
         return;
     }
-    else char_queue[++q_rear] = item, size++;
+    else queue[q_rear--] = item, size++;
 }
 
-char char_QUEUE::remove(){
+char QUEUE::remove(){
     if (underflow()) {
-        cout << "Queue is empty\nAdd some values first";
-        return '-1';
+        cout << "Queue is empty\nAdd some values first\n";
+        return '-';
     }
     else {
-        q_fornt++;
         size--;
-        return (char_queue[q_fornt-1]);
+        return (queue[q_fornt--]);
     }
+}
+
+int QUEUE::count(){
+    return size;
 }
 
 int main(){
-    char_QUEUE q;
-    //q.remove();
-    for(int i=0; i<10; i++) q.add(char(i+65));
+    QUEUE q;
+    for(int i=66; i<76; i++) q.add(char(i+1));
 
-    //cout << q.remove() << endl;
-    q.add('Z');
-    for(int i=0; i<12; i++) cout << q.remove() << endl ;
-
+    cout << q.remove() << endl;
+    for(int i=0; i<9; i++) cout << q.remove() << endl ;
+    q.remove();
 }
+
+

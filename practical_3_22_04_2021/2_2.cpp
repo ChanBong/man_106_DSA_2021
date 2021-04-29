@@ -1,15 +1,17 @@
-#include<bits/stdc++.h>
+#include<iostream>
+#include<string>
+
 using namespace std;
 
 #define MAX 50
 
-class string_QUEUE{
+class QUEUE{
     int q_fornt;
     int q_rear;
-    string string_queue[MAX];
+    string queue[MAX];
     int size;
 public:
-    string_QUEUE();
+    QUEUE();
     bool underflow();
     bool overflow();
     void add(string item);
@@ -17,54 +19,58 @@ public:
     int count();
 };
 
-string_QUEUE::string_QUEUE(){
-    //string_queue[MAX] = {'0'};
-    q_fornt = 0;
-    q_rear = 0;
+QUEUE::QUEUE(){
+    queue[MAX] = {0};
+    q_fornt = MAX-1;
+    q_rear = MAX-1;
     size = 0;
 }
 
-bool string_QUEUE::underflow(){
+bool QUEUE::underflow(){
     if (size==0) return true;
     else return false;
 }
 
-bool string_QUEUE::overflow(){
-    if (size==MAX) return true;
+bool QUEUE::overflow(){
+    if (q_rear==-1) return true;
     else return false;
 }
 
-void string_QUEUE::add(string item){
+void QUEUE::add(string item){
     if (overflow()) {
-        cout << "Queue is full\nRemove some values first";
+        cout << "Queue is full\nRemove some values first\n";
         return;
     }
-    else string_queue[++q_rear] = item, size++;
+    else queue[q_rear--] = item, size++;
 }
 
-string string_QUEUE::remove(){
+string QUEUE::remove(){
     if (underflow()) {
-        cout << "Queue is empty\nAdd some values first";
-        return "-1";
+        cout << "Queue is empty\nAdd some values first\n";
+        return "NA";
     }
     else {
-        q_fornt++;
         size--;
-        return (string_queue[q_fornt-1]);
+        return (queue[q_fornt--]);
     }
+}
+
+int QUEUE::count(){
+    return size;
 }
 
 int main(){
-    string_QUEUE q;
-    //q.remove();
-    string s;
-    for(int i=0; i<10; i++) {
-        s = "Hello World ";
-        s+=(i+65);
+    QUEUE q;
+    string s = "Hello World";
+    for(int i=49; i<58; i++){
+        s.push_back(char(i));
         q.add(s);
     }
+    cout << q.remove() << endl;
 
-    //cout << q.remove() << endl;
-    for(int i=0; i<12; i++) cout << q.remove() << endl ;
+    for(int i=0; i<9; i++) cout << q.remove() << endl ;
+    q.remove();
 
 }
+
+

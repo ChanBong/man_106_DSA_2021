@@ -19,8 +19,8 @@ public:
 
 QUEUE::QUEUE(){
     queue[MAX] = {0};
-    q_fornt = 0;
-    q_rear = -1;
+    q_fornt = MAX-1;
+    q_rear = MAX-1;
     size = 0;
 }
 
@@ -30,7 +30,7 @@ bool QUEUE::underflow(){
 }
 
 bool QUEUE::overflow(){
-    if (q_rear==MAX) return true;
+    if (q_rear==-1) return true;
     else return false;
 }
 
@@ -39,7 +39,7 @@ void QUEUE::add(int item){
         cout << "Queue is full\nRemove some values first\n";
         return;
     }
-    else queue[++q_rear] = item, size++;
+    else queue[q_rear--] = item, size++;
 }
 
 int QUEUE::remove(){
@@ -48,10 +48,13 @@ int QUEUE::remove(){
         return -1;
     }
     else {
-        q_fornt++;
         size--;
-        return (queue[q_fornt-1]);
+        return (queue[q_fornt--]);
     }
+}
+
+int QUEUE::count(){
+    return size;
 }
 
 int main(){
@@ -59,9 +62,8 @@ int main(){
     for(int i=0; i<10; i++) q.add(i+1);
 
     cout << q.remove() << endl;
-    q.add(11);
-    for(int i=0; i<10; i++) cout << q.remove() << endl ;
-
+    for(int i=0; i<9; i++) cout << q.remove() << endl ;
+    cout << q.remove();
 }
 
 
