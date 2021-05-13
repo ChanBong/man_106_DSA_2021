@@ -3,3 +3,4 @@
 *.out
 *.cpp:tests
 *~lock*
+test.cpp
