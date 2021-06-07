@@ -4,3 +4,4 @@
 *.cpp:tests
 *~lock*
 test.cpp
+quiz/
