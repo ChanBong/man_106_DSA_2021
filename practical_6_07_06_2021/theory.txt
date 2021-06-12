@@ -1,0 +1,42 @@
+In Order : K M I C E B D L G F H A      
+Pre Order: D C I K M B E A L F G H
+
+- First node in pre-order traversal is root node:
+    => Root = D
+
+- We'll recursively use the fact that everything on the left of the root in in-order traversal is in the left subtree and everthing
+on the right is in the right subtree
+
+- For D as a root :
+    left subtree:  K M I |C| E B
+                   |C| I K M B E
+    right subtree: L G F H |A|
+                   |A| L F G H
+
+- For C as a root: 
+    left subtree:  K M |I| 
+                   |I| K M
+    right subtree: E |B|
+                   |B| E
+
+- For I as a root:
+    left subtree:  |K| M
+                   |K| M 
+    right subtree: NULL
+
+- For K as a root;
+    left subtree:  NULL
+    right subtree: M
+
+- For B as a root;
+    left subtree:  E
+    right subtree: NULL
+
+    Left branch of entire tree:
+              D
+          C
+       I      B
+    K     E
+      M
+
+- 
