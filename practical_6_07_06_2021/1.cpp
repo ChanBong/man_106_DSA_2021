@@ -61,8 +61,15 @@ int BinartTree::find_depth(){
 int main(){
     BinartTree binary_tree;
     int A[] = {10, 20, 50, 30, 60, 80, 70, 90, 100, 40, 110};
-
+    //int A[] = {1, -1, 3, -1, -1, 2, 4, -1, -1, -1, -1, -1, -1, -1, 5};
     binary_tree.makeTree(A, 10);
+
+/*
+                1
+                    3
+                  2    4
+                          5
+*/
 
 /*
     Tree made :
