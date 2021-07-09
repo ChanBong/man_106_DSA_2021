@@ -4,7 +4,7 @@ using namespace std;
 class weighted_graph{
 private:
     int vertex;
-    int edges; // Edges
+    int edges;
     int** adl;
 
 public:
